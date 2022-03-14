@@ -12,6 +12,7 @@ def main():
     sigma_xx = int(input("sigma_xx = "))
     sigma_yy = int(input("sigma_yy = "))
     sigma_zz = int(input("sigma_zz = "))
+    
     # Default of diagonal stress
     sigma_xy = 0
     sigma_xz = 0
@@ -23,11 +24,21 @@ def main():
                        (sigma_xz, sigma_yz, sigma_zz)])
     print(stress)
 
-# Traction
-def tractionForce(sigma, n):
-    # sigma is a stress matrix
-    # n is a unit vector that is also a matrix 
-    t = sigma*n # traction vector
+def traction(sigma, n):
+    """Calculates the traction vector.
+
+    Parameters
+    ----------
+    sigma : np.mat
+        The stress matrix.
+    n : np.mat
+        The normal vector to a plane.
+    
+    Returns
+    -------
+    The traction vector.
+    """
+    t = sigma*n
     magt = (n.T*sigma*n).item()
     tn = magt*n
     tt = t-tn
