@@ -34,7 +34,24 @@ def mlab_plt_cube(xmin,xmax,ymin,ymax,zmin,zmax):
     faces = cube_faces(xmin,xmax,ymin,ymax,zmin,zmax)
     for grid in faces:
         x,y,z = grid
-        mlab.mesh(x,y,z,opacity=1.0, color=(1,1,1))
+        mlab.mesh(x,y,z,opacity=1.0, color=(1,.8,1))
+
+mlab.figure(fgcolor=(0., 0., 0.), bgcolor=(1, 1, 1))
+
+# positions of vectors
+x = [0]
+y = [0]
+z = [1]
+
+# components of vectors
+u = [1]
+v = [1]
+w = [1]
+
+# plot vectors
+mlab.quiver3d(x, y, z, u, v, w, mode='arrow')
 
 mlab_plt_cube(-1,1,-1,1,-1,1)
+mlab.axes()
 mlab.show()
+
