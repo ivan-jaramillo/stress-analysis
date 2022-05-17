@@ -6,6 +6,7 @@ class Material:
 
         self._name = name
         self._elastic_modulus = elastic_modulus
+        self._shear_modulus = elastic_modulus / (2 * (1 + poisson))
         self._poisson = poisson
         self._thermal_expansion = thermal_expansion
         self._initial_yield = initial_yield
@@ -17,6 +18,10 @@ class Material:
     @property
     def elastic_modulus(self):
         return self._elastic_modulus
+
+    @property
+    def shear_modulus(self):
+        return self._shear_modulus
 
     @property
     def poisson(self):
@@ -35,6 +40,7 @@ class Material:
             f"{typename(self)}"
             f"(name={self.name}, "
             f"elastic_modulus={self.elastic_modulus}, "
+            f"shear_modulus={self.shear_modulus}, "
             f"poisson={self.poisson}, "
             f"thermal_expansion={self.thermal_expansion}, "
             f"initial_yield={self.initial_yield})"
@@ -44,6 +50,7 @@ class Material:
         return (
             f"Material Name: {self.name}\n"
             f"Elastic Modulus: {self.elastic_modulus}\n"
+            f"Shear Modulus: {self.shear_modulus}\n"
             f"Poisson's Ratio: {self.poisson}\n"
             f"Coefficient of Thermal Expansion: {self.thermal_expansion}\n"
             f"Initial Yield Strength: {self.initial_yield}\n"
